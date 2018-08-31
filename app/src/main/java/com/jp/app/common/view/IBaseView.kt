@@ -7,5 +7,5 @@ interface IBaseView{
 
     fun hideLoading()
 
-    fun showError(title: String, message: String, actionOnError: BaseActivity.actionOnError)
+    fun showError(title: String, message: String, actionOnError: BaseActivity.ActionOnError)
 }

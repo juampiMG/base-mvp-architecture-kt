@@ -27,7 +27,7 @@ abstract class BaseActivity : AppCompatActivity(), HasFragmentInjector, IBaseFra
 
     protected var currentFragment: Fragment? = null
 
-    enum class actionOnError {
+    enum class ActionOnError {
         CLOSE, NOTHING
     }
 
@@ -136,12 +136,12 @@ abstract class BaseActivity : AppCompatActivity(), HasFragmentInjector, IBaseFra
         }
     }
 
-    private fun showErrorDialog(title: String, message: String, action: actionOnError) {
+    private fun showErrorDialog(title: String, message: String, action: ActionOnError) {
         val builder = AlertDialog.Builder(this)
         builder.setMessage(message)
                 .setTitle(title)
         builder.setPositiveButton(R.string.accept) { dialog, which ->
-            if (action == actionOnError.CLOSE) {
+            if (action == ActionOnError.CLOSE) {
                 finish()
             }
             dialog.dismiss()
@@ -161,7 +161,7 @@ abstract class BaseActivity : AppCompatActivity(), HasFragmentInjector, IBaseFra
 
     protected abstract fun getLayoutReference(): Int
 
-    override fun showError(title: String, message: String, action: actionOnError) {
+    override fun showError(title: String, message: String, action: ActionOnError) {
         showErrorDialog(title, message, action)
     }
 

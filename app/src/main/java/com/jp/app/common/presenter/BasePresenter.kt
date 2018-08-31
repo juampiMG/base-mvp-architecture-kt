@@ -24,7 +24,7 @@ abstract class BasePresenter  <TView : IBaseView>(view: TView) : IBasePresenter 
             removeAllDisposables()
     }
 
-    protected fun showError(title: String, description: String, actionOnError: BaseActivity.actionOnError) {
+    protected fun showError(title: String, description: String, actionOnError: BaseActivity.ActionOnError) {
         if (mView != null) {
             mView!!.showError(title, description, actionOnError)
         }

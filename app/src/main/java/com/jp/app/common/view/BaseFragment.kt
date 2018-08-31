@@ -122,7 +122,7 @@ abstract class BaseFragment<TPresenter : IBasePresenter, TCallback : IBaseFragme
         }
     }
 
-    override fun showError(title: String, message: String, actionOnError: BaseActivity.actionOnError) {
+    override fun showError(title: String, message: String, actionOnError: BaseActivity.ActionOnError) {
             mCallback?.showError(title, message, actionOnError)
     }
 
