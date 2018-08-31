@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.Toast
 import com.jp.app.R
 import com.jp.app.common.view.IBaseFragmentCallback
+import com.jp.app.ui.sample.SampleActivity
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
