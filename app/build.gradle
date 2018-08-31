@@ -87,6 +87,7 @@ dependencies {
     implementation project(':domain')
     implementation project(':data')
 
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
 
     implementation deps.app.implementation
     annotationProcessor deps.app.annotationProcessor
@@ -97,7 +98,7 @@ dependencies {
     implementation("com.h6ah4i.android.widget.advrecyclerview:advrecyclerview:${advrecyclerviewVersion}@aar") {
         transitive = true
     }
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
 
 }
 repositories {

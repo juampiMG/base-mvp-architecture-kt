@@ -16,6 +16,7 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':domain')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
 
     implementation deps.data.implementation
     annotationProcessor deps.data.annotationProcessor
