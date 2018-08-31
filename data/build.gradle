@@ -21,7 +21,7 @@ dependencies {
     annotationProcessor deps.data.annotationProcessor
     compileOnly deps.data.compileOnly
     testImplementation deps.data.testImplementation
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    kapt deps.data.kapt
 
 }
 repositories {

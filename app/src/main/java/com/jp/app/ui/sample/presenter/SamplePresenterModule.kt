@@ -5,7 +5,7 @@ import com.jp.app.injector.scope.PerFragment
 import dagger.Binds
 import dagger.Module
 
-@Module(includes = arrayOf(BasePresenterModule::class))
+@Module(includes = [BasePresenterModule::class])
 abstract class SamplePresenterModule {
 
     @Binds

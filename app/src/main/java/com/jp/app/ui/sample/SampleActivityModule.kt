@@ -10,7 +10,7 @@ import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
-@Module(includes = arrayOf(BaseActivityModule::class))
+@Module(includes = [BaseActivityModule::class])
 abstract class SampleActivityModule {
     @Binds
     @PerActivity
@@ -21,6 +21,6 @@ abstract class SampleActivityModule {
     internal abstract fun fragmentCallback(activity: SampleActivity): SampleFragment.FragmentCallback
 
     @PerFragment
-    @ContributesAndroidInjector(modules = arrayOf(SampleFragmentModule::class))
+    @ContributesAndroidInjector(modules = [SampleFragmentModule::class])
     internal abstract fun fragmentInjector(): SampleFragment
 }

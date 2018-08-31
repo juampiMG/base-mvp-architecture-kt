@@ -92,6 +92,7 @@ dependencies {
     annotationProcessor deps.app.annotationProcessor
     compileOnly deps.app.compileOnly
     testImplementation deps.app.testImplementation
+    kapt deps.app.kapt
 
     implementation("com.h6ah4i.android.widget.advrecyclerview:advrecyclerview:${advrecyclerviewVersion}@aar") {
         transitive = true

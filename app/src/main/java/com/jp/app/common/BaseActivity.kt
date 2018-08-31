@@ -32,7 +32,7 @@ abstract class BaseActivity : AppCompatActivity(), HasFragmentInjector, IBaseFra
     }
 
     @Inject
-    internal var mFragmentInjector: DispatchingAndroidInjector<Fragment>? = null
+    internal lateinit var mFragmentInjector: DispatchingAndroidInjector<Fragment>
 
     private var compositeDisposable: CompositeDisposable? = null
 

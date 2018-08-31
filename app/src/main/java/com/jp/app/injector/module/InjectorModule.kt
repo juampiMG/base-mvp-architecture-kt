@@ -9,6 +9,6 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class InjectorModule {
     @PerActivity
-    @ContributesAndroidInjector(modules = arrayOf(SampleActivityModule::class))
+    @ContributesAndroidInjector(modules = [SampleActivityModule::class])
     internal abstract fun sampleActivity(): SampleActivity
 }

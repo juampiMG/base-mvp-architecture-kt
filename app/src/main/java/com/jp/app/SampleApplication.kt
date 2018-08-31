@@ -4,6 +4,7 @@ import android.app.Activity
 import android.os.Build
 import android.support.multidex.MultiDexApplication
 import android.support.v7.app.AppCompatDelegate
+import com.jp.app.injector.component.DaggerApplicationComponent
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector

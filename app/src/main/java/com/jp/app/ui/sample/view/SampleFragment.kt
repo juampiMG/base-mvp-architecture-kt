@@ -16,9 +16,8 @@ import java.util.*
 
 class SampleFragment : BaseFragment<ISamplePresenter, SampleFragment.FragmentCallback>(), ISampleView {
 
-    val LAYOUT_ID = R.layout.sample_fragment
+    private val mLayoutId = R.layout.sample_fragment
 
-    private var mGridLayoutManager: LinearLayoutManager? = null
     private var mAdapter: SampleAdapter? = null
 
     companion object {
@@ -33,11 +32,11 @@ class SampleFragment : BaseFragment<ISamplePresenter, SampleFragment.FragmentCal
     }
 
     override fun getLayoutId(): Int {
-        return LAYOUT_ID
+        return mLayoutId
     }
 
 
-    override fun onViewLoaded(savedInstanceState: Bundle, view: View?) {
+    override fun onViewLoaded(savedInstanceState: Bundle?, view: View?) {
         super.onViewLoaded(savedInstanceState, view)
         setUpRecyclerView()
     }

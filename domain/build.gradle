@@ -20,7 +20,7 @@ dependencies {
     annotationProcessor deps.domain.annotationProcessor
     compileOnly deps.domain.compileOnly
     testImplementation deps.domain.testImplementation
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    kapt deps.domain.kapt
 }
 repositories {
     mavenCentral()

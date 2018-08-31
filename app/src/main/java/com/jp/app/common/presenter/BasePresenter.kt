@@ -9,7 +9,7 @@ import javax.inject.Inject
 
 abstract class BasePresenter  <TView : IBaseView>(view: TView) : IBasePresenter {
     @Inject
-    internal var mContext: Context? = null
+    internal lateinit var mContext: Context
 
     protected var mView: TView? = view
 

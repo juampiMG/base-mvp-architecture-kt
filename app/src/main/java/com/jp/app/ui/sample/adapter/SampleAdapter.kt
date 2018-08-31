@@ -7,7 +7,6 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import butterknife.OnClick
 import com.jp.app.R
 import com.jp.app.model.SampleView
 import com.jp.app.utils.ImageHelper
@@ -54,7 +53,7 @@ class SampleAdapter constructor(samples: MutableList<SampleView>, callBack: Samp
         return mList.size
     }
 
-    inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
 
         var textView: AppCompatTextView = itemView.findViewById(R.id.sample_title)
 
@@ -66,8 +65,7 @@ class SampleAdapter constructor(samples: MutableList<SampleView>, callBack: Samp
             ImageHelper.loadImage(itemView.context, uri, imageView)
         }
 
-        @OnClick(R.id.card_view)
-        internal fun onClick() {
+        override fun onClick(p0: View?) {
             if (mListener != null) {
                 mListener!!.sampleClicked(adapterPosition)
             }

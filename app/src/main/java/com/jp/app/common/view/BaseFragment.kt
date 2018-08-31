@@ -19,22 +19,19 @@ import javax.inject.Inject
 abstract class BaseFragment<TPresenter : IBasePresenter, TCallback : IBaseFragmentCallback> : Fragment(), HasFragmentInjector, IBaseView {
 
     @Inject
-    protected var mContext: Context? = null
+    lateinit var mContext: Context
     @Inject
-    var mPresenter: TPresenter? = null
+    lateinit var mPresenter: TPresenter
     @Inject
-    var mCallback: TCallback? = null
+    lateinit var mCallback: TCallback
 
     @Inject
-    internal var mChildFragmentInjector: DispatchingAndroidInjector<Fragment>? = null
+    internal lateinit var mChildFragmentInjector: DispatchingAndroidInjector<Fragment>
 
     private var mFragmentId: String? = null
     private var mLayoutId: Int = 0
 
-    constructor() {
-        val fragmentClass = (this as Any).javaClass
-        mFragmentId = fragmentClass.name
-    }
+
 
     // =============== HasFragmentInjector =========================================================
 
@@ -64,11 +61,11 @@ abstract class BaseFragment<TPresenter : IBasePresenter, TCallback : IBaseFragme
         mLayoutId = getLayoutId()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(mLayoutId, container, false)
     }
 
-    override fun onViewStateRestored(savedInstanceState: Bundle) {
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
         super.onViewStateRestored(savedInstanceState)
         /*
          * Bind the views here instead of in onViewCreated so that mView state changed listeners
@@ -105,7 +102,7 @@ abstract class BaseFragment<TPresenter : IBasePresenter, TCallback : IBaseFragme
         mPresenter!!.onViewReady()
     }
 
-    open fun onViewLoaded(savedInstanceState: Bundle, view: View?) {}
+    open fun onViewLoaded(savedInstanceState: Bundle?, view: View?) {}
 
     override fun onDestroy() {
         super.onDestroy()
@@ -135,6 +132,8 @@ abstract class BaseFragment<TPresenter : IBasePresenter, TCallback : IBaseFragme
 
 
     fun getFragmentId(): String {
+        val fragmentClass = (this as Any).javaClass
+        mFragmentId = fragmentClass.name
         return mFragmentId!!
     }
 

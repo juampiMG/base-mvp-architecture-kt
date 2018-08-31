@@ -7,7 +7,7 @@ import com.jp.app.ui.sample.presenter.SamplePresenterModule
 import dagger.Binds
 import dagger.Module
 
-@Module(includes = arrayOf(BaseFragmentModule::class, SamplePresenterModule::class))
+@Module(includes = [BaseFragmentModule::class, SamplePresenterModule::class])
 abstract class SampleFragmentModule {
     @Binds
     @PerFragment

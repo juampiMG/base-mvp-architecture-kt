@@ -7,11 +7,13 @@ import com.jp.app.ui.sample.view.ISampleView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import java.util.ArrayList
 import javax.inject.Inject
 
 class SamplePresenter @Inject
 internal constructor(sampleView: ISampleView) : BasePresenter<ISampleView>(sampleView), ISamplePresenter, SampleAdapter.SampleAdapterCallBack {
 
+    private var mSampleView : List<SampleView> = ArrayList()
 
     override fun onViewReady() {
         loadSample()
@@ -51,7 +53,7 @@ internal constructor(sampleView: ISampleView) : BasePresenter<ISampleView>(sampl
 
 
     override fun sampleClicked(position: Int) {
-        loadSampleInfo(mSampleView.get(position))
+        loadSampleInfo(mSampleView[position])
     }
 
     private fun loadSampleInfo(sample: SampleView) {

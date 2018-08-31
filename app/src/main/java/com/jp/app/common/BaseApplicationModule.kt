@@ -11,11 +11,10 @@ import dagger.Module
 import javax.inject.Singleton
 
 
-@Module(includes = arrayOf(
-        RepositoryModule::class,
-        NetworkModule::class,
-        UseCaseModule::class
-))
+@Module(includes = [
+    RepositoryModule::class,
+    NetworkModule::class,
+    UseCaseModule::class])
 abstract class BaseApplicationModule {
     @Binds
     @Singleton
