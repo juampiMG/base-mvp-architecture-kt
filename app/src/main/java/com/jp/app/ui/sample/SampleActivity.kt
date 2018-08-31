@@ -5,6 +5,7 @@ import com.jp.app.R
 import com.jp.app.common.BaseActivity
 import com.jp.app.model.SampleView
 import com.jp.app.ui.sample.view.SampleFragment
+import com.jp.app.utils.NavigationUtils
 
 class SampleActivity : BaseActivity(), SampleFragment.FragmentCallback{
 
@@ -14,7 +15,7 @@ class SampleActivity : BaseActivity(), SampleFragment.FragmentCallback{
         super.onCreate(savedInstanceState)
         if (savedInstanceState == null) {
             currentFragment = SampleFragment.newInstance(Bundle())
-            NavigationUtils.navigateToFragment(this, currentFragment, R.id.content, false)
+            NavigationUtils.navigateToFragment(this, currentFragment!!, R.id.content, false)
         } else {
             currentFragment = fragmentManager.findFragmentById(R.id.content)
         }

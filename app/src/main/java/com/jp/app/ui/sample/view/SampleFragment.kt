@@ -11,7 +11,8 @@ import com.jp.app.model.SampleView
 import com.jp.app.ui.sample.adapter.SampleAdapter
 import com.jp.app.ui.sample.presenter.ISamplePresenter
 import com.jp.app.ui.sample.presenter.SamplePresenter
-import java.util.ArrayList
+import kotlinx.android.synthetic.main.sample_fragment.*
+import java.util.*
 
 class SampleFragment : BaseFragment<ISamplePresenter, SampleFragment.FragmentCallback>(), ISampleView {
 
@@ -20,12 +21,11 @@ class SampleFragment : BaseFragment<ISamplePresenter, SampleFragment.FragmentCal
     private var mGridLayoutManager: LinearLayoutManager? = null
     private var mAdapter: SampleAdapter? = null
 
-    fun newInstance(bundle: Bundle?): SampleFragment {
-        var bundle = bundle
-        val fragment = SampleFragment()
-        bundle = bundle ?: Bundle()
-        fragment.arguments = bundle
-        return fragment
+    companion object {
+
+        fun newInstance(bundle: Bundle?) = SampleFragment().apply {
+            arguments = bundle ?: Bundle()
+        }
     }
 
     interface FragmentCallback : IBaseFragmentCallback {
@@ -43,14 +43,19 @@ class SampleFragment : BaseFragment<ISamplePresenter, SampleFragment.FragmentCal
     }
 
     private fun setUpRecyclerView() {
-        mGridLayoutManager = GridLayoutManager(activity, 3)
-        mRecyclerView.setLayoutManager(mGridLayoutManager)
-        mAdapter = SampleAdapter(ArrayList<E>(), getPresenter() as SamplePresenter)
-        mRecyclerView.setAdapter(mAdapter)
+        mAdapter = SampleAdapter(ArrayList(), getPresenter() as SamplePresenter)
+        val manager = GridLayoutManager(activity, 3)
+
+        recycler_view.apply {
+            layoutManager = manager
+            setHasFixedSize(false)
+            adapter = mAdapter
+        }
+
     }
 
     override fun drawSample(list: List<SampleView>){
-        mAdapter.addSamples(Sample)
+        mAdapter!!.addSamples(list)
     }
 
     override fun loadSampleInfo(Sample: SampleView) {

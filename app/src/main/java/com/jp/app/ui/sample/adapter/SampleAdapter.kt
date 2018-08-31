@@ -1,29 +1,25 @@
 package com.jp.app.ui.sample.adapter
 
 import android.net.Uri
+import android.support.v7.widget.AppCompatImageView
+import android.support.v7.widget.AppCompatTextView
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import butterknife.OnClick
 import com.jp.app.R
-import com.jp.app.R.id.card_view
-import com.jp.app.R.id.sample_image
 import com.jp.app.model.SampleView
+import com.jp.app.utils.ImageHelper
 
-class SampleAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class SampleAdapter constructor(samples: MutableList<SampleView>, callBack: SampleAdapterCallBack) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private lateinit var mList: MutableList<SampleView>
+    private var mList: MutableList<SampleView> = samples
 
-    private var mListener: SampleAdapterCallBack? = null
+    private var mListener: SampleAdapterCallBack? = callBack
 
     interface SampleAdapterCallBack {
         fun sampleClicked(adapterPosition: Int)
-    }
-
-    fun SampleAdapter(samples: MutableList<SampleView>, callBack: SampleAdapterCallBack): ??? {
-        mList = samples
-        mListener = callBack
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -39,7 +35,7 @@ class SampleAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private fun drawSample(holder: ItemViewHolder, sample: SampleView) {
         if (!sample.title.isNullOrBlank()) {
-            holder.sample_title = sample.title
+            holder.textView.text = sample.title
         }
 
         if (!sample.urlLogo.isNullOrBlank()) {
@@ -60,11 +56,14 @@ class SampleAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+        var textView: AppCompatTextView = itemView.findViewById(R.id.sample_title)
+
+        var imageView: AppCompatImageView = itemView.findViewById(R.id.sample_image)
 
 
         fun loadImage(imagePath: String) {
             val uri = Uri.parse(imagePath)
-            ImageHelper.loadImage(card_view, uri, sample_image, null)
+            ImageHelper.loadImage(itemView.context, uri, imageView)
         }
 
         @OnClick(R.id.card_view)

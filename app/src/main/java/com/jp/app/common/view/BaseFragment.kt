@@ -28,8 +28,13 @@ abstract class BaseFragment<TPresenter : IBasePresenter, TCallback : IBaseFragme
     @Inject
     internal var mChildFragmentInjector: DispatchingAndroidInjector<Fragment>? = null
 
-    private val mFragmentId: String? = null
+    private var mFragmentId: String? = null
     private var mLayoutId: Int = 0
+
+    constructor() {
+        val fragmentClass = (this as Any).javaClass
+        mFragmentId = fragmentClass.name
+    }
 
     // =============== HasFragmentInjector =========================================================
 
