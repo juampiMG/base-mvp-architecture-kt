@@ -2,10 +2,13 @@ package com.jp.data.entity.mapper
 
 import com.jp.data.entity.sample.SampleEntity
 import com.jp.domain.model.SampleDomain
+import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class SampleEntityMapper {
+class SampleEntityMapper
+@Inject
+constructor(){
 
     fun transform(source: SampleEntity): SampleDomain {
         val sampleDomain = SampleDomain()
