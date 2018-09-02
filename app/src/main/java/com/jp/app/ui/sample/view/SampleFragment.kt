@@ -3,6 +3,7 @@ package com.jp.app.ui.sample.view
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.jp.app.R
 import com.jp.app.common.view.BaseFragment
@@ -42,7 +43,7 @@ class SampleFragment : BaseFragment<ISamplePresenter, SampleFragment.FragmentCal
     }
 
     private fun setUpRecyclerView() {
-        mAdapter = SampleAdapter(ArrayList(), getPresenter() as SamplePresenter)
+        mAdapter = SampleAdapter(ArrayList(), mPresenter as SamplePresenter)
         val manager = GridLayoutManager(activity, 3)
 
         recycler_view.apply {
@@ -65,6 +66,10 @@ class SampleFragment : BaseFragment<ISamplePresenter, SampleFragment.FragmentCal
 
     fun getAdapter(): SampleAdapter? {
         return mAdapter
+    }
+
+    fun getRecyclerView (): RecyclerView {
+        return recycler_view
     }
 
 }

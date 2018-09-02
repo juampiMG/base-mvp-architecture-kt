@@ -25,7 +25,7 @@ abstract class BaseActivity : AppCompatActivity(), HasFragmentInjector, IBaseFra
 
     private var layoutId: Int = 0
 
-    protected var currentFragment: Fragment? = null
+    var currentFragment: Fragment? = null
 
     enum class ActionOnError {
         CLOSE, NOTHING

@@ -28,6 +28,7 @@ ext {
     robolectricVersion = '3.8'
     mockitoVersion = '1.10.19'
     assertjVersion = '1.1.0'
+    mockitoKotlinVersion = '1.6.0'
 
     // dependencies
 
@@ -78,7 +79,8 @@ ext {
                             "com.squareup.assertj:assertj-android:${assertjVersion}",
                             "org.robolectric:shadows-multidex:${robolectricVersion}",
                             "com.android.support:recyclerview-v7:${supportLibraryVersion}",
-                            "com.google.dagger:dagger-android-support:${daggerVersion}"
+                            "com.google.dagger:dagger-android-support:${daggerVersion}",
+                            "com.nhaarman:mockito-kotlin-kt1.1:${mockitoKotlinVersion}"
                     ],
                     kapt : [
                             "org.parceler:parceler:${parcelerVersion}",

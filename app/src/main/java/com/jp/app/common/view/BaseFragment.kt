@@ -99,33 +99,31 @@ abstract class BaseFragment<TPresenter : IBasePresenter, TCallback : IBaseFragme
          * called with a non-null View.
          */
         onViewLoaded(savedInstanceState, view)
-        mPresenter!!.onViewReady()
+        mPresenter.onViewReady()
     }
 
     open fun onViewLoaded(savedInstanceState: Bundle?, view: View?) {}
 
     override fun onDestroy() {
         super.onDestroy()
-        mPresenter!!.detachView()
+        mPresenter.detachView()
     }
 
     override fun onPause() {
         super.onPause()
-        mPresenter!!.pause()
+        mPresenter.pause()
     }
 
     override fun showLoading() {
-            mCallback?.showLoading()
+        mCallback.showLoading()
     }
 
     override fun hideLoading() {
-        if (mCallback != null) {
-            mCallback!!.hideLoading()
-        }
+            mCallback.hideLoading()
     }
 
     override fun showError(title: String, message: String, actionOnError: BaseActivity.ActionOnError) {
-            mCallback?.showError(title, message, actionOnError)
+        mCallback.showError(title, message, actionOnError)
     }
 
     abstract fun getLayoutId(): Int
@@ -135,10 +133,6 @@ abstract class BaseFragment<TPresenter : IBasePresenter, TCallback : IBaseFragme
         val fragmentClass = (this as Any).javaClass
         mFragmentId = fragmentClass.name
         return mFragmentId!!
-    }
-
-    fun getPresenter(): TPresenter {
-        return mPresenter!!
     }
 
     fun setPresenter(presenter: TPresenter) {
