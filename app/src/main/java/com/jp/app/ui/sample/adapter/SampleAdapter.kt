@@ -3,11 +3,13 @@ package com.jp.app.ui.sample.adapter
 import android.net.Uri
 import android.support.v7.widget.AppCompatImageView
 import android.support.v7.widget.AppCompatTextView
+import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.jp.app.R
+import com.jp.app.R.id.card_view
 import com.jp.app.model.SampleView
 import com.jp.app.utils.ImageHelper
 
@@ -29,10 +31,10 @@ class SampleAdapter constructor(samples: MutableList<SampleView>, callBack: Samp
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val sample = mList[position]
-        drawSample(holder as ItemViewHolder, sample)
+        drawSample(holder as ItemViewHolder, sample, position)
     }
 
-    private fun drawSample(holder: ItemViewHolder, sample: SampleView) {
+    private fun drawSample(holder: ItemViewHolder, sample: SampleView, position: Int) {
         if (!sample.title.isNullOrBlank()) {
             holder.textView.text = sample.title
         }
@@ -40,6 +42,12 @@ class SampleAdapter constructor(samples: MutableList<SampleView>, callBack: Samp
         if (!sample.urlLogo.isNullOrBlank()) {
             holder.loadImage(sample.urlLogo!!)
         }
+
+        holder.addOnClickListener(View.OnClickListener {
+            if (mListener != null) {
+                mListener!!.sampleClicked(position)
+            }
+        })
     }
 
 
@@ -53,7 +61,9 @@ class SampleAdapter constructor(samples: MutableList<SampleView>, callBack: Samp
         return mList.size
     }
 
-    inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+    inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        var cardView: CardView = itemView.findViewById(R.id.card_view)
 
         var textView: AppCompatTextView = itemView.findViewById(R.id.sample_title)
 
@@ -65,10 +75,8 @@ class SampleAdapter constructor(samples: MutableList<SampleView>, callBack: Samp
             ImageHelper.loadImage(itemView.context, uri, imageView)
         }
 
-        override fun onClick(p0: View?) {
-            if (mListener != null) {
-                mListener!!.sampleClicked(adapterPosition)
-            }
+        fun addOnClickListener(listener: View.OnClickListener) {
+            cardView.setOnClickListener(listener)
         }
     }
 
