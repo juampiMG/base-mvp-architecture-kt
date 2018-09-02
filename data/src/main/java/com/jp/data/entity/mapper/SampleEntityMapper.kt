@@ -8,9 +8,9 @@ import javax.inject.Singleton
 @Singleton
 class SampleEntityMapper
 @Inject
-constructor(){
+constructor(): BaseModelDataMapper<SampleEntity, SampleDomain>() {
 
-    fun transform(source: SampleEntity): SampleDomain {
+    override fun transform(source: SampleEntity): SampleDomain {
         val sampleDomain = SampleDomain()
         try {
             sampleDomain.id = source.id
@@ -23,7 +23,7 @@ constructor(){
         return sampleDomain
     }
 
-    fun inverseTransform(source: SampleDomain): SampleEntity {
+    override fun inverseTransform(source: SampleDomain): SampleEntity {
         val sampleEntity = SampleEntity()
         try {
         } catch (e: Exception) {

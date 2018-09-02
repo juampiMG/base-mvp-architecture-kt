@@ -51,7 +51,7 @@ abstract class BasePresenter  <TView : IBaseView>(view: TView) : IBasePresenter 
         }
     }
 
-    fun getContext(): Context? {
+    fun getContext(): Context {
         return mContext
     }
 
