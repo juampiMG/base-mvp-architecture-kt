@@ -13,3 +13,11 @@ Dagger 2 (Dagger Injector)
 Retrofit
 
 Butterknife
+
+And Testing view and Presenter:
+
+JUnit
+
+Robolectric
+
+Mockito
